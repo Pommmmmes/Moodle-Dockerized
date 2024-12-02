@@ -37,6 +37,7 @@ envs=(
   MOODLE_DB_PREFIX
   MOODLE_WWW_ROOT
   MOODLE_DATA_ROOT
+  MOODLE_PLUGINS
 )
 haveConfig=
 for e in "${envs[@]}"; do
@@ -56,6 +57,7 @@ if [ "$haveConfig" ]; then
   : "${MOODLE_DB_PREFIX:=mdl_}"
   : "${MOODLE_WWW_ROOT:=http://localhost}"
   : "${MOODLE_DATA_ROOT:=/usr/share/nginx/html/moodledata}"
+  : "${MOODLE_PLUGINS:=}" # comma separated list of plugins to install (MOODLE_PLUGINS=mod_hvp,mod_certificate)
 
   if [ ! -e "config.php" ]; then
     mv config-dist.php config.php
